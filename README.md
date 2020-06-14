@@ -46,4 +46,4 @@ $ yarn start
 
 ---
 
-Feito com ♥ Lucas Torres :wave: [Entre em contato!](https://www.linkedin.com/in/torresfelicio/)
+Feito com ♥  Lucas Torres :wave: [Entre em contato!](https://www.linkedin.com/in/torresfelicio/)
