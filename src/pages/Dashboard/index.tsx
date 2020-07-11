@@ -1,5 +1,6 @@
 import React, { useState, useEffect, FormEvent } from 'react';
 import { FiChevronRight } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 import api from '../../services/api';
 
 import logoImg from '../../styles/assets/logo.svg';
@@ -12,7 +13,7 @@ interface Repository {
   owner: {
     login: string;
     avatar_url: string;
-  }
+  };
 }
 
 const Dashboard: React.FC = () => {
@@ -20,7 +21,8 @@ const Dashboard: React.FC = () => {
   const [inputError, setInputError] = useState('');
 
   const [repositories, setRepositories] = useState<Repository[]>(() => {
-    const storageRepositories = localStorage.getItem('@GithubExplorer:repositories');
+    const storageRepositories = localStorage.getItem(
+      '@GithubExplorer:repositories');
     if (storageRepositories) {
       return JSON.parse(storageRepositories);
     } else {
@@ -71,7 +73,7 @@ const Dashboard: React.FC = () => {
 
     <Repositories>
       {repositories.map(repository => (
-        <a key={repository.full_name} href="#">
+        <Link key={repository.full_name} to={`/repository/${repository.full_name}`}>
         <img
           src={repository.owner.avatar_url}
           alt={repository.owner.login}
@@ -81,7 +83,7 @@ const Dashboard: React.FC = () => {
             <p>{repository.description}</p>
           </div>
           <FiChevronRight size={20} />
-      </a>
+      </Link>
       ))}
     </Repositories>
     </>
